@@ -61,7 +61,7 @@ app.post("/api/comment", (request, response) => {
       })
       .status(500)
       .end();
-  } else if (!name || message) {
+  } else if (!name || !message) {
     response
       .send({
         success: false,
