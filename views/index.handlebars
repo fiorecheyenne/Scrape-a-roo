@@ -1,0 +1,59 @@
+<div class="section">
+    {{#each story }}
+        <article class="box is-paddingless">
+            <a href="{{ this.link }}" class="card-header-title has-text-centered is-block" target="_blank">
+                {{ this.title }}
+            </a>
+            <div class="card-footer">
+                <a data-id="{{this.id}}" class="activate-modal card-footer-item is-link">
+                    <span>
+                        ({{{this.comments.length}}}) Comments
+                    </span>
+                </a>
+            </div>
+            <div id="{{ this.id }}" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="content box">
+                        {{#if this.comments}}
+                            <h3>Comments:</h3>
+                            <hr>
+                            <div class="columns is-multiline">
+                                {{#each this.comments}}
+                                    <article class="column is-12">
+                                        <b>{{ this.name }}</b>
+                                        <br>
+                                        {{ this.message }}
+                                    </article>
+                                {{/each}}
+                            </div>
+                        {{else}}
+                            <div class="container is-large">
+                                <h3 class="is-block has-text-centered">No comments</h3>
+                            </div>
+                        {{/if}}
+                        <hr>
+                        <form>
+                            <h4 class="subtitle">Add a comment</h4>
+                            <div class="field">
+                                <label class="label">Name</label>
+                                <div class="control">
+                                    <input class="comment-name input" type="text" placeholder="Example: Bob">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Message</label>
+                                <div class="control">
+                                    <textarea class="comment-message textarea"
+                                        placeholder="Example: Our governemt sucks!"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="button is-primary is-success">Add your comment</button>
+                        </form>
+                    </div>
+                </div>
+                <button class="modal-close is-large" aria-label="close"></button>
+            </div>
+        </article>
+    {{/each}}
+</div>
