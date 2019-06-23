@@ -20,7 +20,7 @@ app.use(express.json());
 app.engine("handlebars", handlebars());
 app.set("view engine", "handlebars");
 
-axios.get("https://old.reddit.com/r/science/").then(response => {
+axios.get("https://old.reddit.com/r/space/").then(response => {
   const $ = cheerio.load(response.data);
 
   $("div.top-matter").each(function(i, element) {
