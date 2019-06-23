@@ -5,10 +5,13 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("./Story");
 const handlebars = require("express-handlebars");
-const MONGO_DB = process.env.MONGODB_URI || "mongodb://localhost/scienceScrape";
+// const MONGO_DB = process.env.MONGODB_URI || "mongodb://localhost/scienceScrape";
+module.exports = app;
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(MONGO_DB);
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/scienceScrape"
+);
 mongoose.set("useFindAndModify", false);
 db.Story.createCollection();
 app.use(express.static("public"));
